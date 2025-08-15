@@ -1,8 +1,9 @@
 #!/bin/bash
 # 内存监控启动脚本：每5秒执行一次检测，支持开机自启
 
-# 定义监控脚本路径（请替换为你的memory_alert.sh实际路径）
-MONITOR_SCRIPT="./memory_alert.sh"
+# 定义监控脚本路径
+MONITOR_SCRIPT="/usr/local/bin/mal/memory_alert.sh" # 开发环境
+# MONITOR_SCRIPT="./memory_alert.sh" # 测试环境
 
 # 检查监控脚本是否存在
 if [ ! -f "$MONITOR_SCRIPT" ]; then

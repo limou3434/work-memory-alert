@@ -1,6 +1,6 @@
 #!/bin/bash
 # 内存阈值（可修改为 80、90 等）
-THRESHOLD=85
+THRESHOLD=80
 
 # 从/proc/meminfo获取内存信息
 MEM_TOTAL=$(grep MemTotal /proc/meminfo | awk '{print $2}')
@@ -20,5 +20,5 @@ MEM_USAGE=$((USED_MEM * 100 / MEM_TOTAL))
 if [ "$MEM_USAGE" -gt "$THRESHOLD" ]; then
   # 使用系统自带的警告图标
   export DISPLAY=:0
-  notify-send "内存占用过高，小心别崩了哥们..." "当前内存使用率：$MEM_USAGE%" --icon=dialog-warning
+  notify-send "内存占用过高，小心别崩了哥们，要被管家打断双腿了..." "当前内存使用率：$MEM_USAGE%" --icon=dialog-warning
 fi
