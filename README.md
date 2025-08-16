@@ -13,37 +13,24 @@
 
 ## 过程
 
+### 规范过程
+
+- 核心可执行文件（最好软连接，并且最好只有一个）放在 `/usr/bin/`，这样所有的用户都可以加载指令到全局进行使用(原因是 /usr/bin 一定在所有用户的 PATH 里，安装后立即全局可用)。几乎所有常见命令（`git、docker、kubectl、python3`）都在 `/usr/bin`。
+- 三方库文件可以放 `/usr/lib/<项目名>/`
+- 资源文件、辅助脚本可以放 `/usr/share/<项目名>/`
+- 桌面软件配置可以放在 `/usr/share/applications/<项目名>/`
+- 桌面图表图片可以放在 `/usr/share/icon/hicolor/256x256/apps/<项目名>.png`
+- 配置文件可以放 `/etc/<项目名>/config.toml`
+
+这样方便系统管理员统一管理。
+
 ### 核心代码
 
 待补充...
 
 ### 打包过程
 
-你这个目录结构已经差不多了，但还差几个关键点才能打包成能被 `apt` 安装的 `.deb`：
-
-#### DEBIAN/control
-
-确保 `DEBIAN/control` 里最少有：
-
-```text
-Package: work-memory-alert
-Version: 1.0
-Section: utils
-Priority: optional
-Architecture: all
-Maintainer: xxx <you@example.com>
-Description: Memory alert scripts
- 一组内存告警脚本，用于监控系统内存状态。
- ...
-```
-
-#### 执行权限
-
-`usr/local/bin` 里的脚本必须有可执行权限，`DEBIAN` 里的文件要可读。
-
-#### 软件打包
-
-在 `~/temp/work-memory-alert` 的上一级目录执行：
+脚本必须有对应要求的权限，在父目录执行打包指令。
 
 ```bash
 dpkg-deb --build work-memory-alert
@@ -55,7 +42,7 @@ dpkg-deb --build work-memory-alert
 work-memory-alert.deb
 ```
 
-#### 安装测试
+### 安装测试
 
 ```bash
 sudo apt install ./work-memory-alert.deb
@@ -70,7 +57,7 @@ sudo apt install ./work-memory-alert.deb
 /usr/local/bin/memory_care.png
 ```
 
-#### 卸载测试
+### 卸载测试
 
 ```bash
 sudo apt remove work-memory-alert # 控制文件中的唯一标识名称
@@ -78,7 +65,6 @@ sudo apt remove work-memory-alert # 控制文件中的唯一标识名称
 
 会自动删除 `/usr/local/bin` 里的这些文件。
 
-#### 发布测试
+### 发布测试
 
-如果想直接 `apt install work-memory-alert` 而不是 `apt install ./xxx.deb`，那可以加一个**本地 apt 源**，以后直接更新、安装。
-
+如果想直接 `apt install work-memory-alert` 而不是 `apt install ./xxx.deb`，那可以加一个**本地 apt 源**，以后直接更新、安装。可以借助 `GitHub Pages + apt 仓库索引` 来实现。

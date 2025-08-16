@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=mal
+Comment=The Work Memory Alert client desktop.
+Exec=mal start
+Icon=/usr/share/icon/hicolor/256x256/apps/mal.png
+Terminal=false
+Type=Application
+Categories=Developer;

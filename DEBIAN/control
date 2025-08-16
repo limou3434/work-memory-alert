@@ -2,6 +2,6 @@ Package: work-memory-alert
 Version: 1.0
 Section: utils
 Priority: optional
-Architecture: all
+Architecture: amd64
 Maintainer: limou3434 <898738804@qq.com>
 Description: 内存管家，监控内存使用情况，当内存使用率超过 85% 时，发送通知。
