@@ -1,8 +1,8 @@
 #!/bin/bash
 # 内存阈值（可修改为 80、90 等）
-THRESHOLD=80
+THRESHOLD=90
 
-# 从/proc/meminfo获取内存信息
+# 从 /proc/meminfo 获取内存信息
 MEM_TOTAL=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 MEM_AVAILABLE=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
 

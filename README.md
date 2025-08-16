@@ -5,7 +5,7 @@
 ## 特性
 
 - 🚀 实时监控系统内存使用率
-- ⚙️ 可配置的内存阈值（默认85%）
+- ⚙️ 可配置的内存阈值（默认 80%）
 - 🔔 桌面通知提醒
 - 🎯 支持开机自启动
 - 🛠️ 简单的命令行控制（mal start/stop）
@@ -26,7 +26,35 @@
 
 ### 核心代码
 
-待补充...
+```shell
+[drwxrwxrwx]  work-memory-alert
+├── [drwxr-xr-x]  DEBIAN
+│   ├── [-rwxr-xr-x]  control
+│   ├── [-rwxr-xr-x]  postinst
+│   ├── [-rwxr-xr-x]  postrm
+│   └── [-rwxr-xr-x]  prerm
+├── [drwxrwxr-x]  etc
+│   └── [drwxrwxr-x]  mal
+│       └── [-rw-r--r--]  config.toml
+├── [-rwxrwxrwx]  README.md
+└── [drwxrwxrwx]  usr
+    ├── [drwxrwxr-x]  bin
+    │   └── [-rwxr-xr-x]  mal
+    ├── [drwxrwxr-x]  lib
+    │   └── [drwxrwxr-x]  mal
+    └── [drwxrwxr-x]  share
+        ├── [drwxrwxr-x]  applications
+        │   └── [-rw-rw-r--]  mal.desktop
+        ├── [drwxrwxr-x]  icon
+        │   └── [drwxrwxr-x]  hicolor
+        └── [drwxrwxr-x]  mal
+            ├── [-rwxr-xr-x]  mal.sh
+            ├── [-rwxrwxr-x]  memory_alert.sh
+            ├── [-rwxrwxr-x]  memory_alert_start.sh
+            └── [-rwxrwxr-x]  memory_alert_stop.sh
+
+12 directories, 12 files
+```
 
 ### 打包过程
 
