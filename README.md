@@ -1,8 +1,8 @@
-# 内存监控管家 (Memory Alert)
+# work-memory-alert
 
 一个智能的内存监控工具，当内存使用率超过设定阈值时会自动发送桌面通知提醒用户。
 
-## 特性
+## 1.特性
 
 - 🚀 实时监控系统内存使用率
 - ⚙️ 可配置的内存阈值（默认 80%）
@@ -11,9 +11,9 @@
 - 🛠️ 简单的命令行控制（mal start/stop）
 - 🖥️ 桌面应用集成
 
-## 过程
+## 2.过程
 
-### 规范过程
+### 2.1.规范过程
 
 - 核心可执行文件（最好软连接，并且最好只有一个）放在 `/usr/bin/`，这样所有的用户都可以加载指令到全局进行使用(原因是 /usr/bin 一定在所有用户的 PATH 里，安装后立即全局可用)。几乎所有常见命令（`git、docker、kubectl、python3`）都在 `/usr/bin`。
 - 三方库文件可以放 `/usr/lib/<项目名>/`
@@ -56,7 +56,7 @@
 12 directories, 12 files
 ```
 
-### 打包过程
+### 2.2.打包过程
 
 脚本必须有对应要求的权限，在父目录执行打包指令。
 
@@ -70,7 +70,7 @@ dpkg-deb --build work-memory-alert
 work-memory-alert.deb
 ```
 
-### 安装测试
+### 2.3.安装测试
 
 ```bash
 sudo apt install ./work-memory-alert.deb
@@ -85,7 +85,7 @@ sudo apt install ./work-memory-alert.deb
 /usr/local/bin/memory_care.png
 ```
 
-### 卸载测试
+### 2.4.卸载测试
 
 ```bash
 sudo apt remove work-memory-alert # 控制文件中的唯一标识名称
@@ -93,6 +93,6 @@ sudo apt remove work-memory-alert # 控制文件中的唯一标识名称
 
 会自动删除 `/usr/local/bin` 里的这些文件。
 
-### 发布测试
+### 2.5.发布测试
 
 如果想直接 `apt install work-memory-alert` 而不是 `apt install ./xxx.deb`，那可以加一个**本地 apt 源**，以后直接更新、安装。可以借助 `GitHub Pages + apt 仓库索引` 来实现。
